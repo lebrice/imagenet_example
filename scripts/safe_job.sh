@@ -22,6 +22,14 @@ git checkout --detach $GIT_COMMIT
 exec uv sync
 END
 
+# These environment variables are used by torch.distributed and should ideally be set
+# before running the python script, or at the very beginning of the python script.
+# Master address is the hostname of the first node in the job.
+export MASTER_ADDR=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
+# Get a unique port for this job based on the job ID
+export MASTER_PORT=$(expr 10000 + $(echo -n $SLURM_JOB_ID | tail -c 4))
+export WORLD_SIZE=$SLURM_NTASKS
+
 # Run the actual job command passed as an argument ('python main.py' for example)
 echo "Running command: $@"
 # Note: This `--gres-flags=allow-task-sharing` is required to allow tasks on the same node to access
