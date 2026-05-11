@@ -1,0 +1,53 @@
+[project]
+name = "distributed-imagenet-example"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "debugpy>=1.8.16",
+    "scipy>=1.16.2",
+    "torch>=2.7.1",
+    "torch-tb-profiler>=0.4.3",
+    "torchvision>=0.22.1",
+    "tqdm>=4.67.1",
+    "rich>=14.1.0",
+    "simple-parsing>=0.1.7",
+    "scikit-learn>=1.7.2",
+    "wandb>=0.21.4",
+    "tensorboard>=2.20.0",
+]
+
+#ruff: increase max line length
+[tool.ruff]
+line-length = 100
+
+[tool.cluv]
+results_path = "logs"
+
+[tool.cluv.env]
+# Environment variables applied when using Slurm commands on all clusters.
+UV_OFFLINE = 1
+WANDB_MODE = "offline"
+
+[tool.cluv.clusters.mila.env]
+UV_OFFLINE = 0
+WANDB_MODE = "online"
+
+[tool.cluv.clusters.narval]
+
+[tool.cluv.clusters.rorqual]
+
+[tool.cluv.clusters.fir]
+
+[tool.cluv.clusters.nibi]
+
+[tool.cluv.clusters.trillium]
+
+[tool.cluv.clusters.trillium-gpu]
+
+[tool.cluv.clusters.tamia]
+
+[tool.cluv.clusters.killarney]
+
+[tool.cluv.clusters.vulcan]
