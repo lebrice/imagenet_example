@@ -607,7 +607,7 @@ def training_step(
     # Using lazy formatting so these tensors are only moved to cpu when necessary.
     if RANK == 0:
         logger.debug("(local) Loss: %.2f Accuracy: %.2f", local_loss, local_accuracy)
-        logger.debug("Average Loss: %.2f Accuracy: %.2%", loss, accuracy)
+        logger.debug("Average Loss: %.2f Accuracy: %.2f", loss, accuracy)
     return loss, accuracy, n_samples
 
 

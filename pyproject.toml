@@ -24,7 +24,7 @@ line-length = 100
 
 
 [tool.cluv]
-results_path = "logs"
+results_path = "checkpoints"
 
 [tool.cluv.env]
 # Environment variables applied when using Slurm commands on all clusters.
